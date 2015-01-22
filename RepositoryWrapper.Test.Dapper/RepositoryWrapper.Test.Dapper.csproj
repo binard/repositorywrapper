@@ -58,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConnectionFactory.cs" />
+    <Compile Include="ConnectionTransactionFactory.cs" />
     <Compile Include="FinderTest.cs" />
     <Compile Include="InitDatas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UnitOfWorkTest.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserFinder.cs" />
     <Compile Include="UserWriter.cs" />

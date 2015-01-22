@@ -14,7 +14,7 @@ namespace RepositoryWrapper.Dapper
         public T GetById(int id)
         {
             string query = String.Format("SELECT * FROM [{0}] WHERE Id = @id", TableName);
-            return DbConnection.Query<T>(query, new { id }).FirstOrDefault();
+            return DbConnection.Query<T>(query, new { id }, DbTransaction).FirstOrDefault();
         }
     }
 }

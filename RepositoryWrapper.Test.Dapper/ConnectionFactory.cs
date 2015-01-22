@@ -7,10 +7,21 @@ namespace RepositoryWrapper.Test.Dapper
 {
     class ConnectionFactory : IConnectionFactory
     {
+        private readonly IDbConnection _cnx;
+
+        public ConnectionFactory()
+        {
+            _cnx = GetSqlConnection();
+        }
+
         public IDbConnection GetConnection()
         {
-            return GetSqlConnection();
+            return _cnx;
+        }
 
+        public IDbTransaction GetTransaction()
+        {
+            return null;
         }
 
         public SqlConnection GetSqlConnection()

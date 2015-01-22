@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using Dapper;
 
 namespace RepositoryWrapper.Dapper
@@ -12,18 +13,12 @@ namespace RepositoryWrapper.Dapper
 
         public void Add(T item)
         {
-            dynamic parameters = Mapping(item);
-            DbConnection.Insert<T>(TableName, item);
-        }
-
-        internal virtual dynamic Mapping(T item)
-        {
-            return item;
+             DbConnection.Insert<T>(TableName, item, DbTransaction);
         }
 
         public void Update(T item)
         {
-            DbConnection.Update<T>(TableName, item);
+            DbConnection.Update<T>(TableName, item, DbTransaction);
         }
 
         public void Delete(T item)
@@ -31,14 +26,14 @@ namespace RepositoryWrapper.Dapper
             if (item != null)
             {
                 string query = String.Format("DELETE FROM [{0}] Where Id = @id", TableName);
-                DbConnection.Query(query, item);
+                DbConnection.Query(query, item, DbTransaction);
             }
         }
 
         public void Delete(int id)
         {
             string query = String.Format("DELETE FROM [{0}] Where Id = @id", TableName);
-            DbConnection.Query(query, new { id });
+            DbConnection.Query(query, new { id }, DbTransaction);
         }
     }
 }

@@ -5,31 +5,35 @@ namespace RepositoryWrapper.Dapper
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IDbConnection _dbConnection;
+        private readonly IDbConnection _dbConnection;
+        private readonly IDbTransaction _transaction;
 
         public UnitOfWork(IConnectionFactory connectionFactory)
         {
             _dbConnection = connectionFactory.GetConnection();
+            _transaction = connectionFactory.GetTransaction();
         }
 
         public void Begin()
         {
-            throw new NotImplementedException();
+            if(_transaction == null)
+                throw new InvalidOperationException("Begin method cannot call if transaction is null");
         }
 
         public void Commit()
         {
-            throw new NotImplementedException();
+            _transaction.Commit();
         }
 
         public void Rollback()
         {
-            throw new NotImplementedException();
+            _transaction.Rollback();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Rollback();
+            _dbConnection.Close();
         }
     }
 }

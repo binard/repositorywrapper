@@ -6,8 +6,8 @@ namespace RepositoryWrapper.Test.Dapper
     [DeploymentItem(@"Sql\init.sql")]
     public class WriterTest
     {
-        private UserWriter _userWriter;
-        private UserFinder _userFinder;
+        private readonly UserWriter _userWriter;
+        private readonly UserFinder _userFinder;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)

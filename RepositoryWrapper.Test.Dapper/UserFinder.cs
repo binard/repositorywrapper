@@ -14,8 +14,8 @@ namespace RepositoryWrapper.Test.Dapper
 
         public User GetByEmail(string email)
         {
-            string query = "Select * FROM [User] Where Email = @email";
-            return DbConnection.Query<User>(query, new { email }).SingleOrDefault();
+            const string query = "Select * FROM [User] Where Email = @email";
+            return DbConnection.Query<User>(query, new { email }, DbTransaction).SingleOrDefault();
         }
     }
 }

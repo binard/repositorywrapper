@@ -9,15 +9,15 @@ namespace RepositoryWrapper.Dapper
 {
     public static class DapperExtensions
     {
-        public static T Insert<T>(this IDbConnection cnn, string tableName, T item) where T : IIdentifiable
+        public static T Insert<T>(this IDbConnection cnn, string tableName, T item, IDbTransaction transaction = null) where T : IIdentifiable
         {
-            IEnumerable<T> result = cnn.Query<T>(DynamicQuery.GetInsertQuery(tableName, item), item);
+            IEnumerable<T> result = cnn.Query<T>(DynamicQuery.GetInsertQuery(tableName, item), item, transaction);
             return result.First();
         }
 
-        public static void Update<T>(this IDbConnection cnn, string tableName, T item) where T : IIdentifiable
+        public static void Update<T>(this IDbConnection cnn, string tableName, T item, IDbTransaction transaction = null) where T : IIdentifiable
         {
-            cnn.Execute(DynamicQuery.GetUpdateQuery(tableName, item), item);
+            cnn.Execute(DynamicQuery.GetUpdateQuery(tableName, item), item, transaction);
         }
     }
 

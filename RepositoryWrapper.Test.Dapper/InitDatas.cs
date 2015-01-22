@@ -7,7 +7,7 @@ namespace RepositoryWrapper.Test.Dapper
     {
         public static void Start()
         {
-            using (SqlConnection cnx = new ConnectionFactory().GetSqlConnection())
+            using (SqlConnection cnx = new ConnectionTransactionFactory().GetSqlConnection())
             {
                cnx.Open();
                var cmd = new SqlCommand(File.ReadAllText("init.sql"));
