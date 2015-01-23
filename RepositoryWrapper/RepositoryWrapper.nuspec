@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Jean-Baptiste BINARD</authors>
+    <owners>Jean-Baptiste BINARD</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/jbbi/repositorywrapper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First Deploy, the release isn't recommanded to production</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>repository</tags>
+  </metadata>
+</package>
