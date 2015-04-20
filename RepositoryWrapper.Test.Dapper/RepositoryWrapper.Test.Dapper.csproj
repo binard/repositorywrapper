@@ -78,6 +78,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\CreateTables.sql" />
     <Content Include="Sql\Init.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
